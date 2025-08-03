@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>قائمة مشاريع التخرج مع قواعد التقييم</title>
+<title>Graduation Projects & Rubric</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
     :root {
@@ -24,138 +24,39 @@
         padding:20px 15px 80px;
         color:#1f2d3a;
         line-height:1.3;
+        transition: all .2s;
     }
+    [dir="rtl"] { direction: rtl; }
+    [dir="ltr"] { direction: ltr; }
     h1, h2 {margin-top:0;}
-    h1 {
-        text-align:center;
-        margin-bottom:5px;
-    }
-    .container {
-        max-width:1200px;
-        margin:auto;
-        gap:20px;
-        display:grid;
-        grid-template-columns: 1fr;
-    }
-    .card {
-        background: var(--main-bg);
-        border-radius: var(--radius);
-        padding:18px 20px;
-        margin-bottom:20px;
-        box-shadow: var(--shadow);
-        position:relative;
-    }
-    .flex {
-        display:flex;
-        gap:15px;
-        flex-wrap:wrap;
-    }
-    .btn {
-        padding:10px 16px;
-        border:none;
-        cursor:pointer;
-        border-radius:5px;
-        font-size:0.95rem;
-        transition: var(--transition);
-        background: var(--accent);
-        color:#fff;
-    }
-    .btn.secondary {
-        background: #555;
-    }
-    .btn.danger {
-        background:#d32f2f;
-    }
-    .btn.small {
-        padding:6px 10px;
-        font-size:.8rem;
-    }
-    table {
-        width:100%;
-        border-collapse:collapse;
-        margin-top:10px;
-        font-size:0.9rem;
-    }
-    th, td {
-        padding:10px 8px;
-        border:1px solid #d9e2ec;
-        text-align:center;
-        vertical-align:middle;
-    }
-    th {
-        background: var(--accent);
-        color:#fff;
-        position:sticky;
-        top:0;
-        z-index:1;
-    }
-    input[type=text], input[type=number] {
-        width:100%;
-        padding:6px 8px;
-        border:1px solid #cfdce7;
-        border-radius:4px;
-        font-size:0.9rem;
-    }
-    .grade-bar {
-        height:10px;
-        border-radius:5px;
-        background:#e1e8f3;
-        overflow:hidden;
-        margin-top:4px;
-        position:relative;
-    }
-    .grade-inner {
-        height:100%;
-        border-radius:5px;
-    }
-    .summary {
-        display:flex;
-        flex-wrap:wrap;
-        gap:10px;
-        margin-top:6px;
-        justify-content:center;
-    }
-    .pill {
-        background:#f0f4f8;
-        padding:6px 12px;
-        border-radius:50px;
-        font-size:.75rem;
-        display:inline-block;
-    }
-    .rubric-table th, .rubric-table td {
-        font-size:0.85rem;
-    }
-    .score-cell {
-        min-width:110px;
-    }
-    .export-row {
-        display:flex;
-        flex-wrap:wrap;
-        gap:10px;
-        margin-top:10px;
-        align-items:center;
-    }
-    .note {
-        font-size:0.75rem;
-        color:#555;
-    }
-    .danger-outline {
-        background:transparent;
-        border:1px solid #d32f2f;
-        color:#d32f2f;
-    }
-    .criteria-weight {
-        width:60px;
-    }
-    .grade-total {
-        font-weight:600;
-    }
+    h1 {text-align:center; margin-bottom:5px;}
+    .container { max-width:1200px; margin:auto; gap:20px; display:grid; grid-template-columns: 1fr; }
+    .card { background: var(--main-bg); border-radius: var(--radius); padding:18px 20px; margin-bottom:20px; box-shadow: var(--shadow); position:relative; }
+    .flex { display:flex; gap:15px; flex-wrap:wrap; }
+    .btn { padding:10px 16px; border:none; cursor:pointer; border-radius:5px; font-size:0.95rem; transition: var(--transition); background: var(--accent); color:#fff; }
+    .btn.secondary { background: #555; }
+    .btn.danger { background:#d32f2f; }
+    .btn.small { padding:6px 10px; font-size:.8rem; }
+    .lang-switch { position:absolute; top:14px; right:14px; }
+    table { width:100%; border-collapse:collapse; margin-top:10px; font-size:0.9rem; }
+    th, td { padding:10px 8px; border:1px solid #d9e2ec; text-align:center; vertical-align:middle; }
+    th { background: var(--accent); color:#fff; position:sticky; top:0; z-index:1; }
+    input[type=text], input[type=number] { width:100%; padding:6px 8px; border:1px solid #cfdce7; border-radius:4px; font-size:0.9rem; }
+    .grade-bar { height:10px; border-radius:5px; background:#e1e8f3; overflow:hidden; margin-top:4px; position:relative; }
+    .grade-inner { height:100%; border-radius:5px; }
+    .summary { display:flex; flex-wrap:wrap; gap:10px; margin-top:6px; justify-content:center; }
+    .pill { background:#f0f4f8; padding:6px 12px; border-radius:50px; font-size:.75rem; display:inline-block; }
+    .rubric-table th, .rubric-table td { font-size:0.85rem; }
+    .score-cell { min-width:110px; }
+    .export-row { display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; align-items:center; }
+    .note { font-size:0.75rem; color:#555; }
+    .danger-outline { background:transparent; border:1px solid #d32f2f; color:#d32f2f; }
+    .criteria-weight { width:60px; }
+    .grade-total { font-weight:600; }
+    .lang-btn { margin-left:8px; }
     @media print {
-        body {
-            background:#fff;
-            padding:10px;
-        }
-        .btn, .no-print {display:none !important;}
+        body { background:#fff; padding:10px; }
+        .btn, .no-print, .lang-switch { display:none !important; }
         .card {box-shadow:none; page-break-inside:avoid;}
         table {page-break-inside:auto;}
         thead {display:table-header-group;}
@@ -167,14 +68,19 @@
 <body>
 
 <div class="card">
-    <h1>قائمة مشاريع التخرج مع التقييم حسب الـ Rubric</h1>
-    <p style="text-align:center; margin:4px 0 15px;">احفظ تلقائيًا في المتصفح. استخدم زر "طباعة" (أو حفظ كـ PDF) لتحويل القائمة إلى ملف PDF احترافي.</p>
-    <div class="export-row no-print">
-        <button class="btn" onclick="window.print()">طباعة / حفظ كـ PDF</button>
-        <button class="btn" onclick="saveBackup()">تحميل نسخة احتياطية (JSON)</button>
-        <input type="file" id="loadFile" style="display:none" accept="application/json" onchange="loadBackup(event)">
-        <button class="btn secondary" onclick="document.getElementById('loadFile').click()">تحميل من نسخة سابقة</button>
-        <div style="margin-left:auto; font-size:0.85rem;">آخر حفظ: <span id="lastSaved">--</span></div>
+    <div style="position:relative;">
+        <div class="lang-switch no-print">
+            <button class="btn small" id="toggleLangBtn">English</button>
+        </div>
+        <h1 id="mainTitle">قائمة مشاريع التخرج مع قواعد التقييم</h1>
+        <p style="text-align:center; margin:4px 0 15px;" id="subtitle">احفظ تلقائيًا في المتصفح. استخدم زر "طباعة" (أو حفظ كـ PDF) لتحويل القائمة إلى ملف PDF احترافي.</p>
+        <div class="export-row no-print">
+            <button class="btn" onclick="window.print()" id="printBtn">طباعة / حفظ كـ PDF</button>
+            <button class="btn" onclick="saveBackup()" id="exportBtn">تحميل نسخة احتياطية (JSON)</button>
+            <input type="file" id="loadFile" style="display:none" accept="application/json" onchange="loadBackup(event)">
+            <button class="btn secondary" onclick="document.getElementById('loadFile').click()" id="importBtn">تحميل من نسخة سابقة</button>
+            <div style="margin-left:auto; font-size:0.85rem;" id="lastSavedWrapper">آخر حفظ: <span id="lastSaved">--</span></div>
+        </div>
     </div>
 </div>
 
@@ -182,23 +88,23 @@
 
     <!-- Rubric builder -->
     <div class="card" id="rubricCard">
-        <h2>تعريف الـ Rubric (معايير التقييم)</h2>
-        <p class="note">أضف معايير متعددة، وحدد الوزن والدرجة القصوى لكل معيار. يجب أن يكون مجموع الأوزان 100%. يتم تطبيق هذه المعايير على كل طالب.</p>
+        <h2 id="rubricTitle">تعريف الـ Rubric (معايير التقييم)</h2>
+        <p class="note" id="rubricNote">أضف معايير متعددة، وحدد الوزن والدرجة القصوى لكل معيار. يجب أن يكون مجموع الأوزان 100%. يتم تطبيق هذه المعايير على كل طالب.</p>
         <div style="overflow:auto;">
         <table class="rubric-table" id="rubricTable">
             <thead>
                 <tr>
-                    <th>الاسم</th>
-                    <th>الوزن (%)</th>
-                    <th>الدرجة القصوى</th>
-                    <th>الوصف / الملاحظات</th>
-                    <th>حذف</th>
+                    <th id="colName">الاسم</th>
+                    <th id="colWeight">الوزن (%)</th>
+                    <th id="colMax">الدرجة القصوى</th>
+                    <th id="colDesc">الوصف / الملاحظات</th>
+                    <th id="colDelete">حذف</th>
                 </tr>
             </thead>
             <tbody></tbody>
             <tfoot>
                 <tr>
-                    <td><strong>المجموع</strong></td>
+                    <td><strong id="totalLabel">المجموع</strong></td>
                     <td id="weightSum">0%</td>
                     <td id="maxPointsSum">0</td>
                     <td colspan="2"></td>
@@ -207,7 +113,7 @@
         </table>
         </div>
         <div style="margin-top:8px;">
-            <button class="btn small" onclick="addCriterion()">إضافة معيار جديد</button>
+            <button class="btn small" onclick="addCriterion()" id="addCriterionBtn">إضافة معيار جديد</button>
             <span id="rubricWarning" style="color:#d32f2f; margin-left:15px;"></span>
         </div>
     </div>
@@ -216,29 +122,27 @@
     <div class="card">
         <div class="flex" style="align-items:flex-start;">
             <div style="flex:1 1 400px;">
-                <h2>الطلاب و المشاريع</h2>
+                <h2 id="studentsTitle">الطلاب و المشاريع</h2>
                 <table id="studentsTable">
                     <thead>
                         <tr>
-                            <th>اسم الطالب</th>
-                            <th>اسم المشروع</th>
-                            <th class="score-cell">تفاصيل التقييم (أدخل درجتك لكل معيار)</th>
-                            <th>المجموع النهائي</th>
-                            <th>حذف</th>
+                            <th id="studentNameCol">اسم الطالب</th>
+                            <th id="projectNameCol">اسم المشروع</th>
+                            <th class="score-cell" id="scoresCol">تفاصيل التقييم (أدخل درجتك لكل معيار)</th>
+                            <th id="finalTotalCol">المجموع النهائي</th>
+                            <th id="deleteCol">حذف</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
                 </table>
                 <div style="margin-top:8px;">
-                    <button class="btn small" onclick="addStudent()">إضافة طالب جديد</button>
+                    <button class="btn small" onclick="addStudent()" id="addStudentBtn">إضافة طالب جديد</button>
                 </div>
             </div>
             <div style="flex:0 0 280px;">
-                <h2>ملخص عام</h2>
-                <div class="summary" id="summaryBox">
-                    <!-- dynamic summary of counts / average -->
-                </div>
-                <div class="note">
+                <h2 id="summaryTitle">ملخص عام</h2>
+                <div class="summary" id="summaryBox"></div>
+                <div class="note" id="summaryNote">
                     يتم تحديث التقييمات تلقائيًا عند تغيير أي قيمة. تأكد أن مجموع أوزان الـ Rubric = 100% حتى تكون النتيجة صحيحة.
                 </div>
             </div>
@@ -247,16 +151,108 @@
 </div>
 
 <script>
+/* ---------- i18n ---------- */
+const LANGS = {
+    ar: {
+        title: 'قائمة مشاريع التخرج مع قواعد التقييم',
+        subtitle: 'احفظ تلقائيًا في المتصفح. استخدم زر "طباعة" (أو حفظ كـ PDF) لتحويل القائمة إلى ملف PDF احترافي.',
+        rubricTitle: 'تعريف الـ Rubric (معايير التقييم)',
+        rubricNote: 'أضف معايير متعددة، وحدد الوزن والدرجة القصوى لكل معيار. يجب أن يكون مجموع الأوزان 100%. يتم تطبيق هذه المعايير على كل طالب.',
+        totalLabel: 'المجموع',
+        studentName: 'اسم الطالب',
+        projectName: 'اسم المشروع',
+        scoresDetail: 'تفاصيل التقييم (أدخل درجتك لكل معيار)',
+        finalTotal: 'المجموع النهائي',
+        delete: 'حذف',
+        addCriterion: 'إضافة معيار جديد',
+        addStudent: 'إضافة طالب جديد',
+        summaryTitle: 'ملخص عام',
+        summaryNote: 'يتم تحديث التقييمات تلقائيًا عند تغيير أي قيمة. تأكد أن مجموع أوزان الـ Rubric = 100% حتى تكون النتيجة صحيحة.',
+        printBtn: 'طباعة / حفظ كـ PDF',
+        exportBtn: 'تحميل نسخة احتياطية (JSON)',
+        importBtn: 'تحميل من نسخة سابقة',
+        lastSaved: 'آخر حفظ:',
+        deleteBtn: 'حذف',
+        placeholderCriterionName: 'اسم المعيار',
+        placeholderDescription: 'وصف/ملاحظات',
+        placeholderStudentName: 'اسم الطالب',
+        placeholderProject: 'اسم المشروع',
+        warningWeights: 'مجموع الأوزان يجب أن يكون 100% لتكون النتائج دقيقة.',
+        noStudents: 'لا يوجد طلاب حتى الآن.',
+    },
+    en: {
+        title: 'Graduation Projects with Rubric Evaluation',
+        subtitle: 'Auto-saved in your browser. Use the "Print" button (or Save as PDF) to export a professional PDF.',
+        rubricTitle: 'Define Rubric (Evaluation Criteria)',
+        rubricNote: 'Add multiple criteria, assign weight and max points. Total weight should be 100%. Applied per student.',
+        totalLabel: 'Total',
+        studentName: 'Student Name',
+        projectName: 'Project Title',
+        scoresDetail: 'Score breakdown (enter score per criterion)',
+        finalTotal: 'Final Score',
+        delete: 'Delete',
+        addCriterion: 'Add New Criterion',
+        addStudent: 'Add New Student',
+        summaryTitle: 'Overview',
+        summaryNote: 'Scores update automatically. Ensure total rubric weight = 100% for accurate results.',
+        printBtn: 'Print / Save as PDF',
+        exportBtn: 'Download Backup (JSON)',
+        importBtn: 'Load From Backup',
+        lastSaved: 'Last Saved:',
+        deleteBtn: 'Delete',
+        placeholderCriterionName: 'Criterion name',
+        placeholderDescription: 'Description / Notes',
+        placeholderStudentName: 'Student name',
+        placeholderProject: 'Project title',
+        warningWeights: 'Total weights must equal 100% for accurate results.',
+        noStudents: 'No students yet.',
+    }
+};
+let currentLang = 'ar';
+function t(key) { return LANGS[currentLang][key] || key; }
+function applyLanguage() {
+    document.documentElement.lang = currentLang === 'ar' ? 'ar' : 'en';
+    document.body.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+    document.getElementById('mainTitle').textContent = t('title');
+    document.getElementById('subtitle').textContent = t('subtitle');
+    document.getElementById('rubricTitle').textContent = t('rubricTitle');
+    document.getElementById('rubricNote').textContent = t('rubricNote');
+    document.getElementById('totalLabel').textContent = t('totalLabel');
+    document.getElementById('studentNameCol').textContent = t('studentName');
+    document.getElementById('projectNameCol').textContent = t('projectName');
+    document.getElementById('scoresCol').textContent = t('scoresDetail');
+    document.getElementById('finalTotalCol').textContent = t('finalTotal');
+    document.getElementById('deleteCol').textContent = t('delete');
+    document.getElementById('addCriterionBtn').textContent = t('addCriterion');
+    document.getElementById('addStudentBtn').textContent = t('addStudent');
+    document.getElementById('summaryTitle').textContent = t('summaryTitle');
+    document.getElementById('summaryNote').textContent = t('summaryNote');
+    document.getElementById('printBtn').textContent = t('printBtn');
+    document.getElementById('exportBtn').textContent = t('exportBtn');
+    document.getElementById('importBtn').textContent = t('importBtn');
+    document.getElementById('lastSavedWrapper').firstChild.textContent = t('lastSaved') + ' ';
+    document.getElementById('toggleLangBtn').textContent = currentLang === 'ar' ? 'English' : 'العربية';
+    renderRubric();
+    renderStudents(); // refresh labels/placeholders
+}
+
+document.getElementById('toggleLangBtn').addEventListener('click', () => {
+    currentLang = currentLang === 'ar' ? 'en' : 'ar';
+    applyLanguage();
+});
+
 /* ---------- State and persistence ---------- */
-const STORAGE_KEY = 'graduation_rubric_students_data';
+const STORAGE_KEY = 'graduation_rubric_students_data_v2';
 let state = {
-    criteria: [], // {name, weight, maxPoints, description, id}
-    students: [] // {name, project, scores: {criterionId: obtained}, timestamp}
+    criteria: [],
+    students: []
 };
 
 function saveState() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    document.getElementById('lastSaved').textContent = new Date().toLocaleString('ar-EG');
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        document.getElementById('lastSaved').textContent = new Date().toLocaleString(currentLang === 'ar' ? 'ar-EG' : 'en-US');
+    } catch {}
 }
 
 function loadState() {
@@ -272,27 +268,26 @@ function resetIfInvalid() {
     if (!Array.isArray(state.students)) state.students = [];
 }
 
-/* ---------- Utility ---------- */
-function makeId() {
-    return 'id_' + Math.random().toString(36).substring(2,9);
+/* ---------- Utilities ---------- */
+function makeId() { return 'id_' + Math.random().toString(36).substring(2,9); }
+function escapeHtml(str='') {
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-/* ---------- Rubric functions ---------- */
+/* ---------- Rubric ---------- */
 function addCriterion(data = null) {
     const def = data || { name: '', weight: 0, maxPoints: 100, description: '', id: makeId() };
     state.criteria.push(def);
     renderRubric();
+    renderStudentsRowTotals(); // rows depend on criteria
     saveState();
 }
 
 function deleteCriterion(id) {
     state.criteria = state.criteria.filter(c => c.id !== id);
-    // also remove score entries from students
-    state.students.forEach(s => {
-        if (s.scores && s.scores[id] !== undefined) delete s.scores[id];
-    });
+    state.students.forEach(s => { if (s.scores && s.scores[id] !== undefined) delete s.scores[id]; });
     renderRubric();
-    renderStudents();
+    renderStudentsRowTotals();
     saveState();
 }
 
@@ -303,7 +298,7 @@ function updateCriterion(id, field, value) {
     else if (field === 'maxPoints') c.maxPoints = parseFloat(value) || 0;
     else c[field] = value;
     renderRubric();
-    renderStudents();
+    renderStudentsRowTotals();
     saveState();
 }
 
@@ -317,15 +312,17 @@ function calculateMaxPointsSum() {
 /* ---------- Students ---------- */
 function addStudent(data = null) {
     const def = data || { name:'', project:'', scores:{}, timestamp: Date.now(), id: makeId() };
-    // ensure scores object has all criteria
     state.students.push(def);
-    renderStudents();
+    appendStudentRow(def);
+    renderSummary();
     saveState();
 }
 
 function deleteStudent(id) {
     state.students = state.students.filter(s => s.id !== id);
-    renderStudents();
+    const tr = document.querySelector(`tr[data-student="${id}"]`);
+    if (tr) tr.remove();
+    renderSummary();
     saveState();
 }
 
@@ -334,7 +331,9 @@ function updateStudentField(id, field, value) {
     if (!st) return;
     if (field === 'name') st.name = value;
     else if (field === 'project') st.project = value;
-    saveState(); renderStudents();
+    updateRowTotal(id);
+    renderSummary();
+    saveState();
 }
 
 function updateStudentScore(studentId, criterionId, value) {
@@ -342,7 +341,9 @@ function updateStudentScore(studentId, criterionId, value) {
     if (!st) return;
     if (!st.scores) st.scores = {};
     st.scores[criterionId] = parseFloat(value) || 0;
-    saveState(); renderStudents();
+    updateRowTotal(studentId);
+    renderSummary();
+    saveState();
 }
 
 /* ---------- Rendering ---------- */
@@ -352,11 +353,11 @@ function renderRubric() {
     state.criteria.forEach(c => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td><input type="text" value="${escapeHtml(c.name)}" placeholder="اسم المعيار" onchange="updateCriterion('${c.id}','name',this.value)"></td>
+            <td><input type="text" value="${escapeHtml(c.name)}" placeholder="${t('placeholderCriterionName')}" onchange="updateCriterion('${c.id}','name',this.value)"></td>
             <td><input type="number" class="criteria-weight" min="0" max="100" value="${c.weight}" onchange="updateCriterion('${c.id}','weight',this.value)"></td>
             <td><input type="number" min="1" value="${c.maxPoints}" onchange="updateCriterion('${c.id}','maxPoints',this.value)"></td>
-            <td><input type="text" value="${escapeHtml(c.description)}" placeholder="وصف/ملاحظات" onchange="updateCriterion('${c.id}','description',this.value)"></td>
-            <td><button class="btn small danger" onclick="deleteCriterion('${c.id}')">حذف</button></td>
+            <td><input type="text" value="${escapeHtml(c.description)}" placeholder="${t('placeholderDescription')}" onchange="updateCriterion('${c.id}','description',this.value)"></td>
+            <td><button class="btn small danger" onclick="deleteCriterion('${c.id}')">${t('deleteBtn')}</button></td>
         `;
         tbody.appendChild(tr);
     });
@@ -364,7 +365,7 @@ function renderRubric() {
     document.getElementById('maxPointsSum').textContent = calculateMaxPointsSum().toFixed(1);
     const warn = document.getElementById('rubricWarning');
     if (Math.abs(calculateWeightSum() - 100) > 0.5) {
-        warn.textContent = 'مجموع الأوزان يجب أن يكون 100% لتكون النتائج دقيقة.';
+        warn.textContent = t('warningWeights');
     } else {
         warn.textContent = '';
     }
@@ -373,91 +374,74 @@ function renderRubric() {
 function renderStudents() {
     const tbody = document.querySelector('#studentsTable tbody');
     tbody.innerHTML = '';
-    state.students.forEach(s => {
-        const tr = document.createElement('tr');
-
-        // name & project
-        const nameTd = document.createElement('td');
-        const nameIn = document.createElement('input');
-        nameIn.type='text'; nameIn.value=s.name; nameIn.placeholder='اسم الطالب';
-        nameIn.oninput = e => updateStudentField(s.id,'name',e.target.value);
-        nameTd.appendChild(nameIn);
-
-        const projTd = document.createElement('td');
-        const projIn = document.createElement('input');
-        projIn.type='text'; projIn.value=s.project; projIn.placeholder='اسم المشروع';
-        projIn.oninput = e => updateStudentField(s.id,'project',e.target.value);
-        projTd.appendChild(projIn);
-
-        // scores breakdown
-        const scoreTd = document.createElement('td');
-        scoreTd.classList.add('score-cell');
-        if (state.criteria.length === 0) {
-            scoreTd.innerHTML = '<div class="note">أضف أولاً معايير التقييم (Rubric) ليظهر إدخال الدرجات.</div>';
-        } else {
-            const inner = document.createElement('div');
-            inner.style.display='grid';
-            inner.style.gridTemplateColumns = '1fr';
-            inner.style.gap='6px';
-            state.criteria.forEach(c => {
-                const row = document.createElement('div');
-                row.style.display='flex';
-                row.style.alignItems='center';
-                row.style.gap='6px';
-                row.style.flexWrap='wrap';
-                const label = document.createElement('div');
-                label.style.flex='1 1 140px';
-                label.innerHTML = `<strong>${escapeHtml(c.name)}</strong> (${(c.weight||0)}%) / ${c.maxPoints} نقطة`;
-                const input = document.createElement('input');
-                input.type='number';
-                input.min=0;
-                input.max=c.maxPoints || 0;
-                input.placeholder=`درجة / ${c.maxPoints}`;
-                input.style.width='90px';
-                input.value = (s.scores && s.scores[c.id] !== undefined) ? s.scores[c.id] : '';
-                input.oninput = e => updateStudentScore(s.id, c.id, e.target.value);
-                row.appendChild(label);
-                row.appendChild(input);
-                scoreTd.appendChild(row);
-            });
-        }
-
-        // total
-        const totalTd = document.createElement('td');
-        totalTd.style.minWidth='135px';
-        const gradeObj = computeStudentTotal(s);
-        const percent = gradeObj.percent;
-        const display = document.createElement('div');
-        display.innerHTML = `
-            <div style="font-weight:600;" class="grade-total">${gradeObj.display}</div>
-            <div class="grade-bar" aria-label="شريط التقييم">
-                <div class="grade-inner" style="width:${percent}%; background:${colorForPercent(percent)};"></div>
-            </div>
-            <div style="font-size:.65rem; margin-top:4px;">${percent.toFixed(1)}%</div>
-        `;
-        totalTd.appendChild(display);
-
-        // delete
-        const delTd = document.createElement('td');
-        delTd.innerHTML = `<button class="btn small danger" onclick="deleteStudent('${s.id}')">حذف</button>`;
-
-        tr.appendChild(nameTd);
-        tr.appendChild(projTd);
-        tr.appendChild(scoreTd);
-        tr.appendChild(totalTd);
-        tr.appendChild(delTd);
-        tbody.appendChild(tr);
-    });
+    state.students.forEach(s => appendStudentRow(s));
     renderSummary();
 }
 
+function appendStudentRow(s) {
+    const tbody = document.querySelector('#studentsTable tbody');
+    const tr = document.createElement('tr');
+    tr.setAttribute('data-student', s.id);
+    // name cell
+    const nameTd = document.createElement('td');
+    const nameInput = document.createElement('input');
+    nameInput.type='text'; nameInput.value=s.name; nameInput.placeholder=t('placeholderStudentName');
+    nameInput.oninput = e => updateStudentField(s.id,'name',e.target.value);
+    nameTd.appendChild(nameInput);
+    // project
+    const projTd = document.createElement('td');
+    const projInput = document.createElement('input');
+    projInput.type='text'; projInput.value=s.project; projInput.placeholder=t('placeholderProject');
+    projInput.oninput = e => updateStudentField(s.id,'project',e.target.value);
+    projTd.appendChild(projInput);
+    // scores
+    const scoreTd = document.createElement('td');
+    scoreTd.classList.add('score-cell');
+    if (state.criteria.length === 0) {
+        scoreTd.innerHTML = `<div class="note">${t('addCriterion')}</div>`;
+    } else {
+        state.criteria.forEach(c => {
+            const rowDiv = document.createElement('div');
+            rowDiv.style.display='flex';
+            rowDiv.style.alignItems='center';
+            rowDiv.style.gap='6px';
+            rowDiv.style.flexWrap='wrap';
+            const label = document.createElement('div');
+            label.style.flex='1 1 140px';
+            label.innerHTML = `<strong>${escapeHtml(c.name)}</strong> (${(c.weight||0)}%) / ${c.maxPoints}`;
+            const input = document.createElement('input');
+            input.type='number';
+            input.min=0;
+            input.max=c.maxPoints || 0;
+            input.placeholder = `0 / ${c.maxPoints}`;
+            input.style.width='90px';
+            input.value = (s.scores && s.scores[c.id] !== undefined) ? s.scores[c.id] : '';
+            input.oninput = e => updateStudentScore(s.id, c.id, e.target.value);
+            rowDiv.appendChild(label);
+            rowDiv.appendChild(input);
+            scoreTd.appendChild(rowDiv);
+        });
+    }
+    // total
+    const totalTd = document.createElement('td');
+    totalTd.classList.add('total-cell');
+    // delete
+    const delTd = document.createElement('td');
+    delTd.innerHTML = `<button class="btn small danger" onclick="deleteStudent('${s.id}')">${t('deleteBtn')}</button>`;
+    tr.appendChild(nameTd);
+    tr.appendChild(projTd);
+    tr.appendChild(scoreTd);
+    tr.appendChild(totalTd);
+    tr.appendChild(delTd);
+    tbody.appendChild(tr);
+    updateRowTotal(s.id);
+}
+
 function computeStudentTotal(student) {
-    // if rubric weights don't sum to ~100, normalize by sum
     let weightSum = calculateWeightSum();
     if (weightSum <= 0) weightSum = 1;
     const useWeightNormalization = Math.abs(weightSum - 100) > 0.5;
     let totalWeighted = 0;
-    let totalPercent = 0;
     state.criteria.forEach(c => {
         const obtained = (student.scores && student.scores[c.id] !== undefined) ? parseFloat(student.scores[c.id]) : 0;
         const max = parseFloat(c.maxPoints) || 1;
@@ -470,10 +454,7 @@ function computeStudentTotal(student) {
         totalWeighted += ratio * effectiveWeight;
     });
     const percent = Math.min(Math.max(totalWeighted,0),100);
-    return {
-        percent,
-        display: percent.toFixed(1) + ' / 100'
-    };
+    return { percent, display: percent.toFixed(1) + ' / 100' };
 }
 
 function colorForPercent(p) {
@@ -482,30 +463,48 @@ function colorForPercent(p) {
     return 'var(--grade-red)';
 }
 
+function updateRowTotal(studentId) {
+    const student = state.students.find(s => s.id === studentId);
+    if (!student) return;
+    const tr = document.querySelector(`tr[data-student="${studentId}"]`);
+    if (!tr) return;
+    const totalTd = tr.querySelector('.total-cell');
+    const gradeObj = computeStudentTotal(student);
+    const percent = gradeObj.percent;
+    totalTd.innerHTML = `
+        <div style="font-weight:600;" class="grade-total">${gradeObj.display}</div>
+        <div class="grade-bar" aria-label="grade bar">
+            <div class="grade-inner" style="width:${percent}%; background:${colorForPercent(percent)};"></div>
+        </div>
+        <div style="font-size:.65rem; margin-top:4px;">${percent.toFixed(1)}%</div>
+    `;
+}
+
+function renderStudentsRowTotals() {
+    state.students.forEach(s => updateRowTotal(s.id));
+}
+
 function renderSummary() {
     const box = document.getElementById('summaryBox');
     box.innerHTML = '';
     if (state.students.length === 0) {
-        box.innerHTML = '<div class="pill">لا يوجد طلاب حتى الآن.</div>';
+        box.innerHTML = `<div class="pill">${t('noStudents')}</div>`;
         return;
     }
-    // average, highest, lowest, count
-    let total = 0;
-    let best = -1;
-    let worst = 101;
+    let total = 0, best = -1, worst = 101;
     state.students.forEach(s => {
-        const t = computeStudentTotal(s).percent;
-        total += t;
-        if (t > best) best = t;
-        if (t < worst) worst = t;
+        const tscore = computeStudentTotal(s).percent;
+        total += tscore;
+        if (tscore > best) best = tscore;
+        if (tscore < worst) worst = tscore;
     });
     const avg = total / state.students.length;
     const count = state.students.length;
     box.innerHTML = `
-        <div class="pill">عدد الطلاب: ${count}</div>
-        <div class="pill">المتوسط: ${avg.toFixed(1)}%</div>
-        <div class="pill">أعلى: ${best.toFixed(1)}%</div>
-        <div class="pill">أدنى: ${worst.toFixed(1)}%</div>
+        <div class="pill">${currentLang==='ar'? 'عدد الطلاب' : 'Students'}: ${count}</div>
+        <div class="pill">${currentLang==='ar'? 'المتوسط' : 'Average'}: ${avg.toFixed(1)}%</div>
+        <div class="pill">${currentLang==='ar'? 'أعلى' : 'Highest'}: ${best.toFixed(1)}%</div>
+        <div class="pill">${currentLang==='ar'? 'أدنى' : 'Lowest'}: ${worst.toFixed(1)}%</div>
     `;
 }
 
@@ -530,26 +529,17 @@ function loadBackup(evt) {
     reader.onload = e => {
         try {
             const imported = JSON.parse(e.target.result);
-            if (!confirm('سيتم استبدال البيانات الحالية. المتابعة؟')) return;
+            if (!confirm(currentLang==='ar'? 'سيتم استبدال البيانات الحالية. المتابعة؟' : 'This will replace current data. Continue?')) return;
             state = imported;
             resetIfInvalid();
             renderRubric();
             renderStudents();
             saveState();
         } catch (err) {
-            alert('فشل تحميل الملف: ' + err.message);
+            alert((currentLang==='ar'? 'فشل تحميل الملف: ' : 'Failed to load file: ') + err.message);
         }
     };
     reader.readAsText(file);
-}
-
-/* ---------- Helpers ---------- */
-function escapeHtml(str='') {
-    return String(str)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
 }
 
 /* ---------- Initialization ---------- */
@@ -557,20 +547,16 @@ function init() {
     loadState();
     resetIfInvalid();
     if (state.criteria.length === 0) {
-        // default example rubric
-        addCriterion({ name:'الابتكار', weight:30, maxPoints:30, description:'جدة الفكرة', id: makeId() });
-        addCriterion({ name:'التوثيق', weight:20, maxPoints:20, description:'وضوح الشرح', id: makeId() });
-        addCriterion({ name:'العمل الفني', weight:25, maxPoints:25, description:'جودة التنفيذ', id: makeId() });
-        addCriterion({ name:'العرض', weight:25, maxPoints:25, description:'مهارات التقديم', id: makeId() });
+        addCriterion({ name: currentLang==='ar'? 'الابتكار' : 'Innovation', weight:30, maxPoints:30, description: currentLang==='ar'? 'جدة الفكرة' : 'Novelty of idea', id: makeId() });
+        addCriterion({ name: currentLang==='ar'? 'التوثيق' : 'Documentation', weight:20, maxPoints:20, description: currentLang==='ar'? 'وضوح الشرح' : 'Clarity of explanation', id: makeId() });
+        addCriterion({ name: currentLang==='ar'? 'العمل الفني' : 'Implementation', weight:25, maxPoints:25, description: currentLang==='ar'? 'جودة التنفيذ' : 'Quality of execution', id: makeId() });
+        addCriterion({ name: currentLang==='ar'? 'العرض' : 'Presentation', weight:25, maxPoints:25, description: currentLang==='ar'? 'مهارات التقديم' : 'Delivery skills', id: makeId() });
     } else {
         renderRubric();
     }
-    if (state.students.length === 0) {
-        addStudent();
-    } else {
-        renderStudents();
-    }
-    // autosave every 5 seconds
+    if (state.students.length === 0) addStudent();
+    else renderStudents();
+    applyLanguage();
     setInterval(saveState, 5000);
 }
 
